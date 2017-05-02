@@ -13,17 +13,17 @@ class QuickStats {
   public:
     QuickStats();
     ~QuickStats();
-    float average(float samples[],int m);
-    float g_average(float samples[],int m);
-    float minimum(float samples[],int m);
-    float maximum(float samples[],int m);	
-    float stdev(float samples[],int m);
-    float stderror(float samples[],int m);
-    float CV(float samples[],int m);
-    void bubbleSort(float A[],int len);
-    float fabs(float sample);
-    float median(float samples[],int m);
-    float mode(float samples[],int m,float epsilon);
+    int average(int samples[],int m);
+    int g_average(int samples[],int m);
+    int minimum(int samples[],int m);
+    int maximum(int samples[],int m);
+    int stdev(int samples[],int m);
+    int stderror(int samples[],int m);
+    int CV(int samples[],int m);
+    void bubbleSort(int A[],int len);
+    int fabs(int sample);
+    int median(int samples[],int m);
+    int mode(int samples[],int m,int epsilon);
 };
 
 #endif

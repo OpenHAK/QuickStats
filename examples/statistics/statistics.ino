@@ -1,15 +1,15 @@
-// Example program for use with QuickStats.h 
+// Example program for use with QuickStats.h
 
 #include "QuickStats.h"
- 
+
 int numreadings = 9;
-float readings[]={1.0,2.2,4.8,3.3,6.1,2.2,3.8,7.0,2.2};
- 
+int readings[]={1,2,4,3,6,2,3,7,2};
+
 QuickStats stats; //initialize an instance of this class
 
 void setup()
 {
-  Serial.begin(9600); 
+  Serial.begin(9600);
   Serial.println("Descriptive Statistics");
   Serial.print("Average: ");
   Serial.println(stats.average(readings,numreadings));
@@ -30,7 +30,7 @@ void setup()
   Serial.print("Mode: ");
   Serial.println(stats.mode(readings,numreadings,0.00001));
 }
- 
+
 void loop()
 {
 }
