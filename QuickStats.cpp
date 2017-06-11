@@ -20,6 +20,14 @@ int QuickStats::average(int samples[],int m)
   }
   return total1/(int)m;
 }
+uint8_t QuickStats::average(uint8_t samples[],uint8_t m)
+{
+  int total1=0.0;
+  for(int i=0;i<m;i++){
+    total1=total1+samples[i];
+  }
+  return total1/(int)m;
+}
 
 int QuickStats::g_average(int samples[],int m)
 {
@@ -51,6 +59,16 @@ int QuickStats::maximum(int samples[],int m)
 }
 
 int QuickStats::stdev(int samples[],int m)
+{
+  int avg=0;
+  int total2=0;
+  avg=average(samples,m);
+  for(int i=0;i<m;i++){
+    total2 = total2 + pow(samples[i] - avg,2);
+  }
+  return sqrt(total2/(m-1));
+}
+uint8_t QuickStats::stdev(uint8_t samples[],uint8_t m)
 {
   int avg=0;
   int total2=0;
@@ -104,6 +122,29 @@ int QuickStats::fabs(int sample) // calculate absolute value
 }
 
 int QuickStats::median(int samples[],int m) //calculate the median
+{
+  //First bubble sort the values: https://en.wikipedia.org/wiki/Bubble_sort
+  int sorted[m];   //Define and initialize sorted array.
+  int temp=0;      //Temporary int for swapping elements
+  /*Serial.println("Before:");
+  for(int j=0;j<m;j++){
+    Serial.println(samples[j]);
+  }*/
+  for(int i=0;i<m;i++){
+    sorted[i]=samples[i];
+  }
+  bubbleSort(sorted,m);  // Sort the values
+  /*Serial.println("After:");
+  for(int i=0;i<m;i++){
+    Serial.println(sorted[i]);
+  }*/
+  if (bitRead(m,0)==1) {  //If the last bit of a number is 1, it's odd. This is equivalent to "TRUE". Also use if m%2!=0.
+    return sorted[m/2]; //If the number of data points is odd, return middle number.
+  } else {
+    return (sorted[(m/2)-1]+sorted[m/2])/2; //If the number of data points is even, return avg of the middle two numbers.
+  }
+}
+uint8_t QuickStats::median(uint8_t samples[],uint8_t m) //calculate the median
 {
   //First bubble sort the values: https://en.wikipedia.org/wiki/Bubble_sort
   int sorted[m];   //Define and initialize sorted array.

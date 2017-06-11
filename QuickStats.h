@@ -14,15 +14,18 @@ class QuickStats {
     QuickStats();
     ~QuickStats();
     int average(int samples[],int m);
+    uint8_t average(uint8_t samples[],uint8_t m);
     int g_average(int samples[],int m);
     int minimum(int samples[],int m);
     int maximum(int samples[],int m);
     int stdev(int samples[],int m);
+    uint8_t stdev(uint8_t samples[],uint8_t m);
     int stderror(int samples[],int m);
     int CV(int samples[],int m);
     void bubbleSort(int A[],int len);
     int fabs(int sample);
     int median(int samples[],int m);
+    uint8_t median(uint8_t samples[],uint8_t m);
     int mode(int samples[],int m,int epsilon);
 };
 
